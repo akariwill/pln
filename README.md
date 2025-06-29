@@ -1,61 +1,168 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
+<a href="https://akariwill.github.io/pln/">
+  <img src="https://github.com/akariwill/Otaku/blob/main/assets/images/akari.jpg" alt="logo" width="180" style="border-radius: 50%;"/>
+</a>
+</div>
+
+<h1 align="center">
+  <a href="https://akariwill.github.io/pln/">PLN Dashboard – Electricity Load Forecasting with ANN</a>
+</h1>
+
+# 📊 PLN Dashboard – Web-based Monitoring & Prediction System
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+ <img src="" alt="main" width="100%">
 </p>
 
-## About Laravel
+<p align="center">
+This is a Laravel-based web dashboard for managing PLN (State Electricity Company) infrastructure data and forecasting electricity load using an Artificial Neural Network (ANN) model developed in Python. The system supports viewing historical data, managing substations, transformers, and feeders, and visualizing electricity load trends and predictions.
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🧠 Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**PLN Dashboard** is a full-stack web system designed to help PLN engineers and administrators monitor real-time electricity data and predict load demands for the next day. The core forecasting logic is powered by a TensorFlow-based ANN, exposed via a Python Flask API, and integrated seamlessly with Laravel's backend.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🔧 Key Features
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- ✅ **Laravel + MySQL** web dashboard for infrastructure management
+- ✅ **Python ANN model** (TensorFlow/Scikit-Learn) for accurate MW prediction
+- ✅ **Prediction endpoint API** (`/predict`) connected via Flask
+- ✅ **Monthly & daily electricity load summary**
+- ✅ **Line charts** for historical trends (Chart.js)
+- ✅ **Dynamic dashboard with real-time updates**
+- ✅ **Clean UI with Bootstrap 5**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
+## 🔌 Prediction API Endpoint
 
-## Laravel Sponsors
+- URL: `http://localhost:5000/predict`
+- Method: `POST`
+- Payload Example:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```json
+{
+  "histori": [
+    {
+      "penyulang": "Penyulang 2 - Trafo 1 - GI 1",
+      "amp_siang": 123,
+      "teg_siang": 20.5,
+      "mw_siang": 9.1,
+      "amp_malam": 110,
+      "teg_malam": 21.0,
+      "mw_malam": 8.8
+    }
+  ]
+}
+```
 
-### Premium Partners
+## Installation  
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Clone Repo
 
-## Contributing
+```bash
+   git clone https://github.com/akariwill/pln.git
+   cd pln
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Install dependencies
 
-## Code of Conduct
+prerequesites:
+- streamlit, openai.. etc
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install && npm install
+```
 
-## Security Vulnerabilities
+### Set up the env file
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+cp .env.example .env
+```
+Edit the .env file and configure your database credentials:
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=pln
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Generate application key
+
+```bash
+php artisan key:generate
+
+```
+
+### Run migrations (and optionally seed data)
+
+```bash
+php artisan migrate --seed
+```
+
+### Start the Laravel development server
+
+```bash
+php artisan serve
+```
+
+## Running the Python API
+
+### navigate to the Python Dir
+
+```bash
+cd python/
+```
+
+### Install Python dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+
+### navigate to the Python Dir
+```bash
+python ann_api.py
+```
+The Flask API will run on http://localhost:5000/predict and is used by the Laravel app to send forecasting requests.
+
+## Directory Structure
+
+```bash
+.
+├── app/                    # Laravel application logic
+├── python/                 # AI model and Flask API
+│   ├── ann_api.py
+│   ├── models/             # Trained model files (.h5, .joblib)
+│   └── requirements.txt
+├── resources/views/        # Blade view templates
+├── routes/web.php          # Route definitions
+├── database/               # Migrations and seeders
+├── public/                 # Public assets
+└── README.md
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Contact
+
+Thank You for passing by!!
+If you have any questions or feedback, please reach out to us at [contact@akariwill.id](mailto:mwildjrs23@gmail.com?subject=[pln]%20-%20Your%20Subject).
+<br>
+or you can DM me on Discord `wildanjr_` or Instagram `akariwill`. (just contact me on one of these account)
+
+## Contributing
+
+Feel free to contribute to this project by submitting pull requests or opening issues in the repository.
+
+---
+
+That's it! You should now have a fully functional website on your system~!
