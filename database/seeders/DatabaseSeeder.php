@@ -37,7 +37,8 @@ class DatabaseSeeder extends Seeder
                     $penyulang = Penyulang::create([
                         'id_trafo_daya' => $trafo->id,
                         'nama' => "Penyulang $p - Trafo $t - GI $g",
-                        'setting_rele' => 25 + $p
+                        'setting_rele' => 25 + $p,
+                        'kap' => 100
                     ]);
 
                     for ($i = 0; $i < 30; $i++) {
