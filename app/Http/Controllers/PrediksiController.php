@@ -67,8 +67,10 @@ class PrediksiController extends Controller
 
         try {
             $response = Http::post('http://127.0.0.1:5000/predict', [
+                'penyulang' => $penyulang->nama, 
                 'histori' => $histori
             ]);
+
 
             if ($response->successful() && $response->json('status') === 'ok') {
                 return redirect()->route('prediksi.index')
