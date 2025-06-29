@@ -37,6 +37,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $p->nama }}</td>
                             <td>{{ $p->id_trafo_daya }}</td>
+                            <td>{{ $p->kap }}</td>
                             <td>{{ $p->setting_rele }}</td>
                             <td>
                                 <a href="{{ route('penyulang.edit', $p->id) }}" class="btn btn-sm btn-warning">Edit</a>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_trafo_daya')->constrained('trafo_dayas')->onDelete('cascade');
             $table->string('nama');
+            $table->string('kap');
             $table->integer('setting_rele');
             $table->timestamps();
         });

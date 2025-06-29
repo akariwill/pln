@@ -25,6 +25,7 @@ class PenyulangController extends Controller
         $validated = $request->validate([
             'id_trafo_daya' => 'required|exists:trafo_dayas,id',
             'nama' => 'required|string|max:255',
+            'kap' => 'required|string|max:255',
             'setting_rele' => 'required|integer',
         ]);
 
@@ -45,6 +46,7 @@ class PenyulangController extends Controller
         $validated = $request->validate([
             'id_trafo_daya' => 'required|exists:trafo_dayas,id',
             'nama' => 'required|string|max:255',
+            'kap' => 'required|string|max:255',
             'setting_rele' => 'required|integer',
         ]);
 
