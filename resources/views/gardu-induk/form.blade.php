@@ -18,16 +18,6 @@
                     <input type="text" name="nama" class="form-control" value="{{ old('nama', $gardu->nama ?? '') }}" required>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Kapasitas</label>
-                    <input type="text" name="kap" class="form-control" value="{{ old('kap', $gardu->kap ?? '') }}" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Setting Rele</label>
-                    <input type="text" name="setting_rele" class="form-control" value="{{ old('setting_rele', $gardu->setting_rele ?? '') }}" required>
-                </div>
-
                 <button type="submit" class="btn btn-success">Simpan</button>
             </form>
         </div>

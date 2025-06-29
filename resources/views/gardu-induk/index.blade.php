@@ -26,8 +26,6 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Kapasitas</th>
-                        <th>Setting Rele</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -36,8 +34,6 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $g->nama }}</td>
-                            <td>{{ $g->kap }}</td>
-                            <td>{{ $g->setting_rele }}</td>
                             <td>
                                 <a href="{{ route('gardu-induk.edit', $g->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                 <form action="{{ route('gardu-induk.destroy', $g->id) }}" method="POST" class="d-inline">

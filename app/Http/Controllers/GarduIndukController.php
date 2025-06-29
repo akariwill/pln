@@ -22,8 +22,6 @@ class GarduIndukController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'kap' => 'required|string|max:255',
-            'setting_rele' => 'required|string|max:255',
         ]);
 
         GarduInduk::create($validated);
@@ -39,8 +37,6 @@ class GarduIndukController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'kap' => 'required|string|max:255',
-            'setting_rele' => 'required|string|max:255',
         ]);
 
         $gardu_induk->update($validated);

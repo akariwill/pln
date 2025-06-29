@@ -25,12 +25,14 @@ class PenyulangController extends Controller
         $validated = $request->validate([
             'id_trafo_daya' => 'required|exists:trafo_dayas,id',
             'nama' => 'required|string|max:255',
+            'setting_rele' => 'required|integer',
         ]);
 
         Penyulang::create($validated);
 
         return redirect()->route('penyulang.index')->with('success', 'Penyulang berhasil ditambahkan.');
     }
+
 
     public function edit(Penyulang $penyulang)
     {
@@ -43,12 +45,14 @@ class PenyulangController extends Controller
         $validated = $request->validate([
             'id_trafo_daya' => 'required|exists:trafo_dayas,id',
             'nama' => 'required|string|max:255',
+            'setting_rele' => 'required|integer',
         ]);
 
         $penyulang->update($validated);
 
         return redirect()->route('penyulang.index')->with('success', 'Penyulang berhasil diperbarui.');
     }
+
 
     public function destroy(Penyulang $penyulang)
     {

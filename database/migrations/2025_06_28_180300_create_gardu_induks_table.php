@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('gardu_induks', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('kap');
-            $table->string('setting_rele');
             $table->timestamps();
         });
     }

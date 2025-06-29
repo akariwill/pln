@@ -24,8 +24,6 @@ class DatabaseSeeder extends Seeder
         for ($g = 1; $g <= 2; $g++) {
             $gardu = GarduInduk::create([
                 'nama' => "Gardu Induk $g",
-                'kap' => ($g * 150) . ' MVA',
-                'setting_rele' => 'A' . $g
             ]);
 
             for ($t = 1; $t <= 2; $t++) {
@@ -42,7 +40,6 @@ class DatabaseSeeder extends Seeder
                         'setting_rele' => 25 + $p
                     ]);
 
-                    // Generate histori 30 hari terakhir
                     for ($i = 0; $i < 30; $i++) {
                         $date = Carbon::now()->subDays(30 - $i);
                         $mwSiang = rand(800, 1200) / 100;

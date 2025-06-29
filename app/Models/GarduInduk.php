@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GarduInduk extends Model
 {
-    protected $fillable = ['nama', 'kap', 'setting_rele'];
+    protected $fillable = ['nama'];
 
     public function trafoDayas()
     {
