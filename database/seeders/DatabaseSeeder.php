@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
                 $trafo = TrafoDaya::create([
                     'id_gardu_induk' => $gardu->id,
                     'nama' => "Trafo $t - GI $g",
+                    'kap' => 100,
                     'setting_rele' => 20 + $t
                 ]);
 
@@ -38,7 +39,6 @@ class DatabaseSeeder extends Seeder
                         'id_trafo_daya' => $trafo->id,
                         'nama' => "Penyulang $p - Trafo $t - GI $g",
                         'setting_rele' => 25 + $p,
-                        'kap' => 100
                     ]);
 
                     for ($i = 0; $i < 30; $i++) {

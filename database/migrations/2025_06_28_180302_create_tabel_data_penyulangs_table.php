@@ -14,16 +14,15 @@ return new class extends Migration
         Schema::create('tabel_data_penyulangs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_penyulang')->constrained('penyulangs')->onDelete('cascade');
-            $table->integer('bulan');
-            $table->integer('tahun');
-            $table->integer('amp_siang');
-            $table->double('teg_siang');
-            $table->double('mw_siang');
-            $table->double('persen_siang');
-            $table->integer('amp_malam');
-            $table->double('teg_malam');
-            $table->double('mw_malam');
-            $table->double('persen_malam');
+            $table->date('tanggal');
+            $table->double('amp_siang');
+            $table->string('teg_siang');
+            $table->string('mw_siang');
+            $table->string('persen_siang');
+            $table->string('amp_malam');
+            $table->string('teg_malam');
+            $table->string('mw_malam');
+            $table->string('persen_malam');
             $table->timestamps();
         });
     }

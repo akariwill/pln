@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_gardu_induk')->constrained('gardu_induks')->onDelete('cascade');
             $table->string('nama');
+            $table->string('kap');
             $table->integer('setting_rele');
             $table->timestamps();
         });

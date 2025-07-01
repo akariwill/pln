@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TrafoDaya extends Model
 {
-    protected $fillable = ['id_gardu_induk', 'nama', 'setting_rele'];
+    protected $fillable = ['id_gardu_induk', 'nama', 'kap', 'setting_rele'];
 
     public function garduInduk()
     {

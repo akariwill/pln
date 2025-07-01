@@ -25,6 +25,7 @@ class TrafoDayaController extends Controller
         $validated = $request->validate([
             'id_gardu_induk' => 'required|exists:gardu_induks,id',
             'nama' => 'required|string|max:255',
+            'kap' => 'required|string|max:255',
             'setting_rele' => 'required|numeric',
         ]);
 
@@ -43,6 +44,7 @@ class TrafoDayaController extends Controller
         $validated = $request->validate([
             'id_gardu_induk' => 'required|exists:gardu_induks,id',
             'nama' => 'required|string|max:255',
+            'kap' => 'required|string|max:255',
             'setting_rele' => 'required|numeric',
         ]);
 

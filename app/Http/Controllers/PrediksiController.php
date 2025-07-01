@@ -62,7 +62,7 @@ class PrediksiController extends Controller
 
         if (count($histori) < 5) {
             return redirect()->route('prediksi.index')
-                ->with('error', 'Data histori tidak mencukupi untuk melakukan prediksi.');
+                ->with('error', 'Harap mengisi minimal 5 data histori untuk memprediksi.');
         }
 
         try {

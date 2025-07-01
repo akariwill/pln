@@ -27,6 +27,7 @@
                         <th>No</th>
                         <th>Gardu Induk</th>
                         <th>Nama</th>
+                        <th>KAP</th>
                         <th>Setting Rele</th>
                         <th>Aksi</th>
                     </tr>
@@ -37,6 +38,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $t->garduInduk->nama ?? '-' }}</td>
                             <td>{{ $t->nama }}</td>
+                            <td>{{ $t->kap }}</td>
                             <td>{{ $t->setting_rele }}</td>
                             <td>
                                 <a href="{{ route('trafo-daya.edit', $t->id) }}" class="btn btn-sm btn-warning">Edit</a>

@@ -30,6 +30,11 @@
                 </div>
 
                 <div class="mb-3">
+                    <label class="form-label">KAP</label>
+                    <input type="text" name="kap" class="form-control" value="{{ old('kap', $kap->kap ?? '') }}" required>
+                </div>
+
+                <div class="mb-3">
                     <label class="form-label">Setting Rele</label>
                     <input type="number" name="setting_rele" class="form-control" value="{{ old('setting_rele', $trafo->setting_rele ?? '') }}" required>
                 </div>

@@ -25,8 +25,8 @@
                 <thead class="table-light">
                     <tr>
                         <th>Id</th>
-                        <th>Bulan</th>
-                        <th>Tahun</th>
+                        <th>Tanggal</th>
+                        <th>Penyulang</th>
                         <th>Arus Siang</th>
                         <th>Tegangan Siang</th>
                         <th>MW Siang</th>
@@ -39,33 +39,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($data as $d)
-                        <tr>
-                            <td>{{ $d->id_penyulang}}</td>
-                            <td>{{ $d->bulan }}</td>
-                            <td>{{ $d->tahun }}</td>
-                            <td>{{ number_format($d->amp_siang, ) }}</td>
-                            <td>{{ number_format($d->teg_siang, ) }}</td>
-                            <td>{{ number_format($d->mw_siang, ) }}</td>
-                            <td>{{ number_format($d->persen_siang, 2) }}%</td>
-                            <td>{{ number_format($d->amp_malam, ) }}</td>
-                            <td>{{ number_format($d->teg_malam, ) }}</td>
-                            <td>{{ number_format($d->mw_malam, ) }}</td>
-                            <td>{{ number_format($d->persen_malam, 2) }}%</td>
-                            <td>
-                                <a href="{{ route('data-penyulang.edit', $d->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('data-penyulang.destroy', $d->id) }}" method="POST" class="d-inline">
-                                    @csrf @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">Hapus</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="12" class="text-center text-muted">Belum ada data.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
+    @forelse ($data as $key => $d)
+        <tr>
+            <td>{{ $key + 1 }}</td>
+            <td>{{ $d->tanggal }}</td>
+            <td>{{ $d->penyulang->nama }}</td>
+            <td>{{ $d->amp_siang }}</td>
+            <td>{{ $d->teg_siang }}</td>
+            <td>{{ $d->mw_siang }}</td>
+            <td>{{ number_format($d->persen_siang, 3) }}%</td> {{-- Mengubah format di sini --}}
+            <td>{{ $d->amp_malam }}</td>
+            <td>{{ $d->teg_malam }}</td>
+            <td>{{ $d->mw_malam }}</td>
+            <td>{{ number_format($d->persen_malam, 3) }}%</td> {{-- Mengubah format di sini --}}
+            <td>
+                <a href="{{ route('data-penyulang.edit', $d->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                <form action="{{ route('data-penyulang.destroy', $d->id) }}" method="POST" class="d-inline">
+                    @csrf @method('DELETE')
+                    <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">Hapus</button>
+                </form>
+            </td>
+        </tr>
+    @empty
+        <tr>
+            <td colspan="12" class="text-center text-muted">Belum ada data.</td>
+        </tr>
+    @endforelse
+</tbody>
             </table>
         </div>
     </div>

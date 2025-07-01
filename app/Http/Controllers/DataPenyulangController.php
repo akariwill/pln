@@ -24,14 +24,13 @@ class DataPenyulangController extends Controller
     {
         $validated = $request->validate([
             'id_penyulang' => 'required|exists:penyulangs,id',
-            'bulan'        => 'required|integer',
-            'tahun'        => 'required|integer',
-            'amp_siang'    => 'required|numeric',
-            'teg_siang'    => 'required|numeric',
-            'mw_siang'     => 'required|numeric',
-            'amp_malam'    => 'required|numeric',
-            'teg_malam'    => 'required|numeric',
-            'mw_malam'     => 'required|numeric',
+            'tanggal'        => 'required|date',
+            'amp_siang'    => 'required',
+            'teg_siang'    => 'required',
+            'mw_siang'     => 'required',
+            'amp_malam'    => 'required',
+            'teg_malam'    => 'required',
+            'mw_malam'     => 'required',
         ]);
 
         $kapasitor = 30;
@@ -56,14 +55,13 @@ class DataPenyulangController extends Controller
     {
         $validated = $request->validate([
             'id_penyulang' => 'required|exists:penyulangs,id',
-            'bulan'        => 'required|integer',
-            'tahun'        => 'required|integer',
-            'amp_siang'    => 'required|numeric',
-            'teg_siang'    => 'required|numeric',
-            'mw_siang'     => 'required|numeric',
-            'amp_malam'    => 'required|numeric',
-            'teg_malam'    => 'required|numeric',
-            'mw_malam'     => 'required|numeric',
+            'tanggal'        => 'required|date',
+            'amp_siang'    => 'required',
+            'teg_siang'    => 'required',
+            'mw_siang'     => 'required',
+            'amp_malam'    => 'required',
+            'teg_malam'    => 'required',
+            'mw_malam'     => 'required',
         ]);
 
         $kapasitor = 30;

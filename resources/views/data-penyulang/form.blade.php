@@ -26,12 +26,8 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">Bulan</label>
-                        <input type="number" name="bulan" class="form-control" value="{{ old('bulan', $data->bulan ?? '') }}" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Tahun</label>
-                        <input type="number" name="tahun" class="form-control" value="{{ old('tahun', $data->tahun ?? '') }}" required>
+                        <label class="form-label">tanggal</label>
+                        <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal', $data->tanggal ?? '') }}" required>
                     </div>
                 </div>
 
