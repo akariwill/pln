@@ -45,11 +45,11 @@
                     <label for="remember_me" class="ml-2 block text-gray-900 dark:text-gray-300">Ingat saya</label>
                 </div>
 
-                @if (Route::has('password.request'))
+                <!-- @if (Route::has('password.request'))
                     <a href="{{ route('password.request') }}" class="font-semibold text-blue-600 hover:text-blue-500 dark:text-yellow-400 dark:hover:text-yellow-300 underline transition-colors duration-300">
                         Lupa password?
                     </a>
-                @endif
+                @endif -->
             </div>
 
             <div class="pt-2">
