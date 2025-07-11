@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="w-full max-w-sm p-8 space-y-6 bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl rounded-2xl shadow-2xl animate-on-load transition-all duration-500 ease-out starting-hidden">
+    <div class="w-full max-w-md p-8 space-y-6 bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl rounded-2xl shadow-2xl animate-on-load transition-all duration-500 ease-out starting-hidden">
 
         <div class="flex justify-center animate-on-load delay-150 transition-all duration-500 ease-out starting-hidden">
             <a href="/" class="flex items-center space-x-2">
@@ -44,6 +44,12 @@
                     <input id="remember_me" name="remember" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-yellow-500 dark:focus:ring-yellow-600">
                     <label for="remember_me" class="ml-2 block text-gray-900 dark:text-gray-300">Ingat saya</label>
                 </div>
+
+                @if (Route::has('password.request'))
+                    <a href="{{ route('password.request') }}" class="font-semibold text-blue-600 hover:text-blue-500 dark:text-yellow-400 dark:hover:text-yellow-300 underline transition-colors duration-300">
+                        Lupa password?
+                    </a>
+                @endif
             </div>
 
             <div class="pt-2">

@@ -30,7 +30,7 @@
         body { 
             font-family: 'Poppins', sans-serif; 
             background-color: var(--main-bg-color);
-            overflow-x: hidden;
+            overflow: hidden; /* Mencegah scroll di level body */
         }
         
         /* === SIDEBAR === */
@@ -117,6 +117,9 @@
             transition: margin-left 0.3s ease-in-out;
             padding: 0;
             width: calc(100% - var(--sidebar-width));
+            height: 100vh; /* Tinggi penuh viewport */
+            display: flex;
+            flex-direction: column;
         }
 
         .top-navbar {
@@ -126,14 +129,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* Tambahan untuk Navbar Sticky */
-            position: sticky;
-            top: 0;
+            /* Navbar tidak lagi sticky karena content-wrapper yang akan scroll */
             z-index: 1020;
+            flex-shrink: 0; /* Mencegah navbar menyusut */
         }
         
         .content-wrapper {
             padding: 2rem;
+            overflow-y: auto; /* Membuat area konten bisa di-scroll jika perlu */
+            flex-grow: 1; /* Mengisi sisa ruang */
         }
 
         /* === RESPONSIVE === */
@@ -159,13 +163,13 @@
         </a>
     </div>
 
-    <div class="sidebar-nav">
-        <!-- <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+    <div class="sidebar-nav flex-grow-1">
+        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
             <i class="fas fa-home fa-fw nav-icon"></i>
             <span>Dashboard</span>
-        </a> -->
+        </a>
         
-        <!-- <div class="menu-header">Manajemen Data</div> -->
+        <div class="menu-header">Manajemen Data</div>
         <a href="{{ route('gardu-induk.index') }}" class="{{ request()->routeIs('gardu-induk.*') ? 'active' : '' }}">
             <i class="fas fa-network-wired fa-fw nav-icon"></i>
             <span>Gardu Induk</span>
@@ -189,20 +193,9 @@
             <span>Prediksi Beban</span>
         </a>
     </div>
-    <div class="sidebar-footer">
-        <a href="{{ route('profile.edit') }}" class="{{ request()->routeIs('profile.edit') ? 'active' : '' }}">
-            <i class="fas fa-user-edit fa-fw nav-icon"></i>
-            <span>Profil Saya</span>
-        </a>
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit" class="btn btn-link text-decoration-none w-100 text-start p-0">
-                <a class="w-100 text-danger" onclick="event.preventDefault(); this.closest('form').submit();">
-                    <i class="fas fa-sign-out-alt fa-fw nav-icon"></i>
-                    <span>Logout</span>
-                </a>
-            </button>
-        </form>
+
+    <div class="sidebar-footer mt-auto">
+        <!-- Item footer bisa ditambahkan di sini jika perlu -->
     </div>
 </div>
 
@@ -213,9 +206,24 @@
         </button>
         
         <div class="ms-auto">
-            <span class="navbar-text">
-                Selamat Datang {{ Auth::user()->name }}
-            </span>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="me-2 d-none d-sm-inline">{{ Auth::user()->name }}</span>
+                    <i class="fas fa-user-circle fs-4"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="fas fa-user-edit fa-fw me-2"></i>Profil Saya</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item text-danger">
+                                <i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 

@@ -26,7 +26,7 @@
                     <tr>
                         <th>No</th>
                         <th>Gardu Induk</th>
-                        <th>Nama</th>
+                        <th>Nama Trafo Daya</th>
                         <th>KAP</th>
                         <th>Setting Rele</th>
                         <th>Aksi</th>

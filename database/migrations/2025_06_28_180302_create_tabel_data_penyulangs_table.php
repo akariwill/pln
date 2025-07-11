@@ -16,13 +16,13 @@ return new class extends Migration
             $table->foreignId('id_penyulang')->constrained('penyulangs')->onDelete('cascade');
             $table->date('tanggal');
             $table->double('amp_siang');
-            $table->string('teg_siang');
-            $table->string('mw_siang');
-            $table->string('persen_siang');
-            $table->string('amp_malam');
-            $table->string('teg_malam');
-            $table->string('mw_malam');
-            $table->string('persen_malam');
+            $table->double('teg_siang');
+            $table->double('mw_siang');
+            $table->integer('persen_siang');
+            $table->double('amp_malam');
+            $table->double('teg_malam');
+            $table->double('mw_malam');
+            $table->integer('persen_malam');
             $table->timestamps();
         });
     }

@@ -36,12 +36,6 @@
         text-transform: uppercase;
     }
 
-    .stat-card .stat-content h3 {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #212529;
-    }
-
     /* Variasi warna border dan ikon */
     .stat-card.border-primary { border-left-color: #0d6efd; }
     .stat-card.border-primary .stat-icon { color: #0d6efd; }
@@ -69,17 +63,18 @@
 </style>
 
 <!-- Header Halaman -->
-<div class="mb-4">
-    <h3 class="fw-bold">Dashboard</h3>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold mb-0">Dashboard</h3>
+    <span class="text-muted">{{ now()->translatedFormat('l, j F Y') }}</span>
 </div>
 
 <!-- Kartu Statistik -->
 <div class="row g-4">
     <div class="col-xl-3 col-md-6">
-        <div class="card stat-card border-primary">
+        <div class="card stat-card border-primary h-100">
             <div class="card-body">
                 <div class="stat-content">
-                    <h5>Beban Hari Ini</h5>
+                    <h5 class="card-title">Beban Hari Ini</h5>
                     <h3>{{ number_format($totalBebanHariIni, 2) }} <small class="fs-6 text-muted">MW</small></h3>
                 </div>
                 <div class="stat-icon">
@@ -89,10 +84,10 @@
         </div>
     </div>
     <div class="col-xl-3 col-md-6">
-        <div class="card stat-card border-danger">
+        <div class="card stat-card border-danger h-100">
             <div class="card-body">
                 <div class="stat-content">
-                    <h5>Beban Bulan Ini</h5>
+                    <h5 class="card-title">Beban Bulan Ini</h5>
                     <h3>{{ number_format($totalBebanBulanIni, 2) }} <small class="fs-6 text-muted">MW</small></h3>
                 </div>
                 <div class="stat-icon">
@@ -102,10 +97,10 @@
         </div>
     </div>
     <div class="col-xl-3 col-md-6">
-        <div class="card stat-card border-success">
+        <div class="card stat-card border-success h-100">
             <div class="card-body">
                 <div class="stat-content">
-                    <h5>Total Penyulang</h5>
+                    <h5 class="card-title">Total Penyulang</h5>
                     <h3>{{ $totalPenyulang }}</h3>
                 </div>
                 <div class="stat-icon">
@@ -115,10 +110,10 @@
         </div>
     </div>
     <div class="col-xl-3 col-md-6">
-        <div class="card stat-card border-warning">
+        <div class="card stat-card border-warning h-100">
             <div class="card-body">
                 <div class="stat-content">
-                    <h5>Prediksi Besok</h5>
+                    <h5 class="card-title">Prediksi Besok</h5>
                     <h3>{{ number_format($prediksiBesok, 2) }} <small class="fs-6 text-muted">MW</small></h3>
                 </div>
                 <div class="stat-icon">
@@ -130,21 +125,21 @@
 </div>
 
 <!-- Grafik -->
-<div class="row g-4 mt-4">
+<div class="row g-4 mt-2">
     <div class="col-lg-7">
-        <div class="card chart-card">
+        <div class="card chart-card h-100">
             <div class="card-header">Tren Beban Bulanan</div>
-            <div class="card-body">
-                <canvas id="bebanChart" height="300"></canvas>
+            <div class="card-body d-flex align-items-center">
+                <canvas id="bebanChart" style="height: 320px;"></canvas>
             </div>
         </div>
     </div>
 
     <div class="col-lg-5">
-        <div class="card chart-card">
+        <div class="card chart-card h-100">
             <div class="card-header">Riwayat Beban Harian</div>
-            <div class="card-body">
-                <canvas id="grafikPrediksi" height="300"></canvas>
+            <div class="card-body d-flex align-items-center">
+                <canvas id="grafikPrediksi" style="height: 320px;"></canvas>
             </div>
         </div>
     </div>
