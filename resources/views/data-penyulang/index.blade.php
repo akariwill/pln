@@ -12,9 +12,9 @@
                 </ol>
             </nav>
         </div>
-        @role('admin')
+         @if(Auth::user()->hasRole('admin'))
         <a href="{{ route('data-penyulang.create') }}" class="btn btn-primary">+ Tambah Data</a>
-        @endrole
+        @endif
 
     </div>
 
@@ -56,7 +56,7 @@
                         <td>{{ $d->mw_malam }}</td>
                         <td>{{ number_format($d->persen_malam, 3) }}%</td> {{-- Mengubah format di sini --}}
                         <td>
-                            @role('admin')
+                            @if(Auth::user()->hasRole('admin'))
                             <a href="{{ route('data-penyulang.edit', $d->id) }}" class="btn btn-sm btn-warning">Edit</a>
 
                             <form action="{{ route('data-penyulang.destroy', $d->id) }}" method="POST" class="d-inline">
@@ -64,7 +64,7 @@
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">Hapus</button>
                             </form>
-                            @endrole
+                            @endif
                         </td>
 
                     </tr>

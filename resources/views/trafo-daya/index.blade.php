@@ -12,9 +12,9 @@
                 </ol>
             </nav>
         </div>
-        @role('admin')
+        @if(Auth::user()->hasRole('admin'))
         <a href="{{ route('trafo-daya.create') }}" class="btn btn-primary">+ Tambah Trafo Daya</a>
-        @endrole
+        @endif
     </div>
 
     @if (session('success'))
@@ -44,7 +44,7 @@
                             <td>{{ $t->nama }}</td>
                             <td>{{ $t->kap }}</td>
                             <td>{{ $t->setting_rele }}</td>
-                            @role('admin')
+                            @if(Auth::user()->hasRole('admin'))
                             <td>
                                 <a href="{{ route('trafo-daya.edit', $t->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                 <form action="{{ route('trafo-daya.destroy', $t->id) }}" method="POST" class="d-inline">
@@ -52,7 +52,7 @@
                                     <button class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</button>
                                 </form>
                             </td>
-                            @endrole
+                            @endif
                         </tr>
                     @endforeach
                     @if($trafos->isEmpty())

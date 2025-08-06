@@ -13,9 +13,9 @@
             </nav>
         </div>
 
-        @role('admin')
+         @if(Auth::user()->hasRole('admin'))
             <a href="{{ route('penyulang.create') }}" class="btn btn-primary">+ Tambah Penyulang</a>
-        @endrole
+        @endif
     </div>
 
     @if (session('success'))
@@ -43,7 +43,7 @@
                             <td>{{ $p->nama }}</td>
                             <td>{{ $p->id_trafo_daya }}</td>
                             <td>{{ $p->setting_rele }}</td>
-                            @role('admin')
+                            @if(Auth::user()->hasRole('admin'))
                                 <td>
                                     <a href="{{ route('penyulang.edit', $p->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                     <form action="{{ route('penyulang.destroy', $p->id) }}" method="POST" class="d-inline">
@@ -51,7 +51,7 @@
                                         <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">Hapus</button>
                                     </form>
                                 </td>
-                            @endrole
+                            @endif
                         </tr>
                     @endforeach
                     @if($penyulangs->isEmpty())

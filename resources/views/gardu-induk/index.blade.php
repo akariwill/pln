@@ -13,9 +13,9 @@
             </nav>
         </div>
 
-        @role('admin')
+         @if(Auth::user()->hasRole('admin'))
         <a href="{{ route('gardu-induk.create') }}" class="btn btn-primary">+ Tambah Gardu Induk</a>
-        @endrole
+        @endif
     </div>
 
     @if (session('success'))
@@ -39,7 +39,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $g->nama }}</td>
-                        @role('admin')
+                        @if(Auth::user()->hasRole('admin'))
                         <td>
                             <a href="{{ route('gardu-induk.edit', $g->id) }}" class="btn btn-sm btn-warning">Edit</a>
                             <form action="{{ route('gardu-induk.destroy', $g->id) }}" method="POST" class="d-inline">
@@ -47,7 +47,7 @@
                                 <button class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</button>
                             </form>
                         </td>
-                        @endrole
+                        @endif
                     </tr>
                     @endforeach
                     @if($gardus->isEmpty())

@@ -32,7 +32,7 @@
     <tr>
         <td>{{ ++$i }}</td>
         <td>{{ $role->name }}</td>
-        @role('admin')
+        @if(Auth::user()->hasRole('admin'))
             <td>
                 <a class="btn btn-info btn-sm" href="{{ route('roles.show',$role->id) }}"><i class="fa-solid fa-list"></i> Show</a>
                 <a class="btn btn-primary btn-sm" href="{{ route('roles.edit',$role->id) }}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
@@ -44,7 +44,7 @@
                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button>
                 </form>
             </td>
-        @endrole
+        @endif
     </tr>
     @endforeach
 </table>
