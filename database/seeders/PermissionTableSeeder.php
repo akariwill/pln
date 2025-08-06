@@ -14,6 +14,11 @@ class PermissionTableSeeder extends Seeder
     {
         $permissions = [
             // Gardu Induk
+            'role-list',
+            'role-create',
+            'role-edit',
+            'role-delete',
+
             'gardu-induk-list',
             'gardu-induk-create',
             'gardu-induk-edit',
