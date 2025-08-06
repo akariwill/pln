@@ -12,11 +12,14 @@
                 </ol>
             </nav>
         </div>
+
+        @role('admin')
         <a href="{{ route('gardu-induk.create') }}" class="btn btn-primary">+ Tambah Gardu Induk</a>
+        @endrole
     </div>
 
     @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+    <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
     <div class="card">
@@ -26,25 +29,31 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
+                        @role('admin')
                         <th>Aksi</th>
+                        @endrole
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($gardus as $g)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $g->nama }}</td>
-                            <td>
-                                <a href="{{ route('gardu-induk.edit', $g->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('gardu-induk.destroy', $g->id) }}" method="POST" class="d-inline">
-                                    @csrf @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</button>
-                                </form>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $g->nama }}</td>
+                        @role('admin')
+                        <td>
+                            <a href="{{ route('gardu-induk.edit', $g->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('gardu-induk.destroy', $g->id) }}" method="POST" class="d-inline">
+                                @csrf @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</button>
+                            </form>
+                        </td>
+                        @endrole
+                    </tr>
                     @endforeach
                     @if($gardus->isEmpty())
-                        <tr><td colspan="5" class="text-center">Belum ada data.</td></tr>
+                    <tr>
+                        <td colspan="@role('admin')3@else2@endrole" class="text-center">Belum ada data.</td>
+                    </tr>
                     @endif
                 </tbody>
             </table>

@@ -12,11 +12,14 @@
                 </ol>
             </nav>
         </div>
+        @role('admin')
         <a href="{{ route('data-penyulang.create') }}" class="btn btn-primary">+ Tambah Data</a>
+        @endrole
+
     </div>
 
     @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+    <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
     <div class="card">
@@ -39,33 +42,38 @@
                     </tr>
                 </thead>
                 <tbody>
-    @forelse ($data as $key => $d)
-        <tr>
-            <td>{{ $key + 1 }}</td>
-            <td>{{ $d->tanggal }}</td>
-            <td>{{ $d->penyulang->nama }}</td>
-            <td>{{ $d->amp_siang }}</td>
-            <td>{{ $d->teg_siang }}</td>
-            <td>{{ $d->mw_siang }}</td>
-            <td>{{ number_format($d->persen_siang, 3) }}%</td> {{-- Mengubah format di sini --}}
-            <td>{{ $d->amp_malam }}</td>
-            <td>{{ $d->teg_malam }}</td>
-            <td>{{ $d->mw_malam }}</td>
-            <td>{{ number_format($d->persen_malam, 3) }}%</td> {{-- Mengubah format di sini --}}
-            <td>
-                <a href="{{ route('data-penyulang.edit', $d->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                <form action="{{ route('data-penyulang.destroy', $d->id) }}" method="POST" class="d-inline">
-                    @csrf @method('DELETE')
-                    <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">Hapus</button>
-                </form>
-            </td>
-        </tr>
-    @empty
-        <tr>
-            <td colspan="12" class="text-center text-muted">Belum ada data.</td>
-        </tr>
-    @endforelse
-</tbody>
+                    @forelse ($data as $key => $d)
+                    <tr>
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $d->tanggal }}</td>
+                        <td>{{ $d->penyulang->nama }}</td>
+                        <td>{{ $d->amp_siang }}</td>
+                        <td>{{ $d->teg_siang }}</td>
+                        <td>{{ $d->mw_siang }}</td>
+                        <td>{{ number_format($d->persen_siang, 3) }}%</td> {{-- Mengubah format di sini --}}
+                        <td>{{ $d->amp_malam }}</td>
+                        <td>{{ $d->teg_malam }}</td>
+                        <td>{{ $d->mw_malam }}</td>
+                        <td>{{ number_format($d->persen_malam, 3) }}%</td> {{-- Mengubah format di sini --}}
+                        <td>
+                            @role('admin')
+                            <a href="{{ route('data-penyulang.edit', $d->id) }}" class="btn btn-sm btn-warning">Edit</a>
+
+                            <form action="{{ route('data-penyulang.destroy', $d->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">Hapus</button>
+                            </form>
+                            @endrole
+                        </td>
+
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="12" class="text-center text-muted">Belum ada data.</td>
+                    </tr>
+                    @endforelse
+                </tbody>
             </table>
         </div>
     </div>

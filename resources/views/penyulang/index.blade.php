@@ -12,7 +12,10 @@
                 </ol>
             </nav>
         </div>
-        <a href="{{ route('penyulang.create') }}" class="btn btn-primary">+ Tambah Penyulang</a>
+
+        @role('admin')
+            <a href="{{ route('penyulang.create') }}" class="btn btn-primary">+ Tambah Penyulang</a>
+        @endrole
     </div>
 
     @if (session('success'))
@@ -28,7 +31,9 @@
                         <th>Nama penyulang</th>
                         <th>ID Trafo</th>
                         <th>Setting Rele</th>
-                        <th>Aksi</th>
+                        @role('admin')
+                            <th>Aksi</th>
+                        @endrole
                     </tr>
                 </thead>
                 <tbody>
@@ -38,17 +43,19 @@
                             <td>{{ $p->nama }}</td>
                             <td>{{ $p->id_trafo_daya }}</td>
                             <td>{{ $p->setting_rele }}</td>
-                            <td>
-                                <a href="{{ route('penyulang.edit', $p->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                <form action="{{ route('penyulang.destroy', $p->id) }}" method="POST" class="d-inline">
-                                    @csrf @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">Hapus</button>
-                                </form>
-                            </td>
+                            @role('admin')
+                                <td>
+                                    <a href="{{ route('penyulang.edit', $p->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <form action="{{ route('penyulang.destroy', $p->id) }}" method="POST" class="d-inline">
+                                        @csrf @method('DELETE')
+                                        <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">Hapus</button>
+                                    </form>
+                                </td>
+                            @endrole
                         </tr>
                     @endforeach
                     @if($penyulangs->isEmpty())
-                        <tr><td colspan="5" class="text-center">Belum ada data.</td></tr>
+                        <tr><td colspan="@role('admin')5@else4@endrole" class="text-center">Belum ada data.</td></tr>
                     @endif
                 </tbody>
             </table>

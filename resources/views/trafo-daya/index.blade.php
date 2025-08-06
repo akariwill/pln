@@ -12,7 +12,9 @@
                 </ol>
             </nav>
         </div>
+        @role('admin')
         <a href="{{ route('trafo-daya.create') }}" class="btn btn-primary">+ Tambah Trafo Daya</a>
+        @endrole
     </div>
 
     @if (session('success'))
@@ -29,7 +31,9 @@
                         <th>Nama Trafo Daya</th>
                         <th>KAP</th>
                         <th>Setting Rele</th>
+                        @role('admin')
                         <th>Aksi</th>
+                        @endrole
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +44,7 @@
                             <td>{{ $t->nama }}</td>
                             <td>{{ $t->kap }}</td>
                             <td>{{ $t->setting_rele }}</td>
+                            @role('admin')
                             <td>
                                 <a href="{{ route('trafo-daya.edit', $t->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                 <form action="{{ route('trafo-daya.destroy', $t->id) }}" method="POST" class="d-inline">
@@ -47,10 +52,11 @@
                                     <button class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</button>
                                 </form>
                             </td>
+                            @endrole
                         </tr>
                     @endforeach
                     @if($trafos->isEmpty())
-                        <tr><td colspan="5" class="text-center">Belum ada data.</td></tr>
+                        <tr><td colspan="@role('admin')6 @else 5 @endrole" class="text-center">Belum ada data.</td></tr>
                     @endif
                 </tbody>
             </table>
