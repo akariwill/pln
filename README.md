@@ -5,10 +5,6 @@
 # 📊 PLN Dashboard – Web-based Monitoring & Prediction System
 
 <p align="center">
- <img src="" alt="main" width="100%">
-</p>
-
-<p align="center">
 This is a Laravel-based web dashboard for managing PLN (State Electricity Company) infrastructure data and forecasting electricity load using an Artificial Neural Network (ANN) model developed in Python. The system supports viewing historical data, managing substations, transformers, and feeders, and visualizing electricity load trends and predictions.
 </p>
 
