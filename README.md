@@ -152,13 +152,6 @@ The Flask API will run on http://localhost:5000/predict and is used by the Larav
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## Contact
-
-Thank You for passing by!!
-If you have any questions or feedback, please reach out to us at [contact@akariwill.id](mailto:mwildjrs23@gmail.com?subject=[pln]%20-%20Your%20Subject).
-<br>
-or you can DM me on Discord `wildanjr_` or Instagram `akariwill`. (just contact me on one of these account)
-
 ## Contributing
 
 Feel free to contribute to this project by submitting pull requests or opening issues in the repository.
