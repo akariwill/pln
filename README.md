@@ -1,11 +1,5 @@
-<div align="center">
-<a href="https://akariwill.github.io/pln/">
-  <img src="https://github.com/akariwill/Otaku/blob/main/assets/images/akari.jpg" alt="logo" width="180" style="border-radius: 50%;"/>
-</a>
-</div>
-
 <h1 align="center">
-  <a href="https://akariwill.github.io/pln/">PLN Dashboard – Electricity Load Forecasting with ANN</a>
+  <a href="https://muliamb.github.io/pln/">PLN Dashboard – Electricity Load Forecasting with ANN</a>
 </h1>
 
 # 📊 PLN Dashboard – Web-based Monitoring & Prediction System
@@ -63,7 +57,7 @@ This is a Laravel-based web dashboard for managing PLN (State Electricity Compan
 ### Clone Repo
 
 ```bash
-   git clone https://github.com/akariwill/pln.git
+   git clone https://github.com/muliamb/pln.git
    cd pln
 ```
 
